@@ -4,7 +4,7 @@ var motion = Vector2(0, 0);
 
 const SPEED = 1000;
 const GRAVITY = 300;
-const JUMP_SPEED = 3000;
+const JUMP_SPEED = 5000;
 const UP = Vector2(0, -1);
 
 signal animate;

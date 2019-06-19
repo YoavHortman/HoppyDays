@@ -3,8 +3,6 @@
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://PlayerAnimation.tscn" type="PackedScene" id=2]
 
-
-
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 59.1592
 height = 83.7681
@@ -21,4 +19,10 @@ visible = false
 shape = SubResource( 1 )
 
 [node name="PlayerAnimation" parent="." instance=ExtResource( 2 )]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 2, 2 )
+limit_left = 0
+limit_top = 0
 [connection signal="animate" from="." to="PlayerAnimation" method="_on_Player_animate"]
