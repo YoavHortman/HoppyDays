@@ -37,6 +37,12 @@ Jump={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Terrain"
+2d_physics/layer_3="Hazards"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
