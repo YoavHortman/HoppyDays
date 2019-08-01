@@ -7,8 +7,7 @@ const GRAVITY = 300;
 const JUMP_SPEED = 5000;
 const UP = Vector2(0, -1);
 const WORLD_LIMIT = 3000;
-
-var lives = 3;
+export var BOOST_MULTIPLAYER = 1.2
 
 signal animate;
 
@@ -21,8 +20,8 @@ func _physics_process(delta):
 	
 func apply_gravity():
 	if position.y > WORLD_LIMIT:
-		end_game();
-	if is_on_floor():
+		get_tree().call_group("GameState", "end_game");
+	if is_on_floor() and motion.y > 0:
 		motion.y = 0;
 	elif is_on_ceiling(): 
 		motion.y = 1;
@@ -46,16 +45,14 @@ func animate():
 	emit_signal("animate", motion);
 	
 	
-func end_game():
-	get_tree().change_scene("res://Levels/GameOve.tscn");
-	
 func hurt():
 	$PainSFX.play();
 	position.y -= 1;
 	yield(get_tree(), "idle_frame");
 	motion.y = -JUMP_SPEED;
-	lives -= 1;
-	if lives < 0:
-		end_game();
 	
+func boost():
+	position.y -= 1;
+	yield(get_tree(), "idle_frame");
+	motion.y -= JUMP_SPEED * BOOST_MULTIPLAYER;
 	
