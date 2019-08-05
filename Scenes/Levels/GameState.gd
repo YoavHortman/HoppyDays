@@ -31,3 +31,6 @@ func update_gui():
 	
 func end_game():
 	get_tree().change_scene("res://Levels/GameOve.tscn");
+	
+func win_game():
+	get_tree().change_scene("res://Levels/Victory.tscn");
